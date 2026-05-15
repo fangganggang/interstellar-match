@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: interstellarmatch
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --timeout 120
+    envVars:
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_API_BASE
+        value: https://open.bigmodel.cn/api/paas/v4/
+      - key: AI_MODEL
+        value: glm-4
